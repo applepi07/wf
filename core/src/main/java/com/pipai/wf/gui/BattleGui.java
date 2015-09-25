@@ -36,6 +36,7 @@ import com.pipai.wf.battle.map.GridPosition;
 import com.pipai.wf.battle.map.MapGraph;
 import com.pipai.wf.battle.spell.FireballSpell;
 import com.pipai.wf.battle.vision.FogOfWar;
+import com.pipai.wf.battle.weapon.Rifle;
 import com.pipai.wf.battle.weapon.SpellWeapon;
 import com.pipai.wf.battle.weapon.Weapon;
 import com.pipai.wf.exception.IllegalActionException;
@@ -625,7 +626,7 @@ public class BattleGui extends Gui implements BattleObserver, AnimationControlle
 			// Skill
 			if (this.mode == Mode.MOVE) {
 				for (Ability a : selectedAgent.getAgent().getAbilities()) {
-					if (a instanceof PrecisionShotAbility && !a.isOnCooldown()) {
+					if (a instanceof PrecisionShotAbility && !a.isOnCooldown() && selectedAgent.getAgent().getCurrentWeapon() instanceof Rifle) {
 						this.switchToTargetMode((PrecisionShotAbility) a);
 						break;
 					} else if (a instanceof SuppressionAbility) {

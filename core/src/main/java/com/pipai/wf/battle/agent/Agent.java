@@ -104,6 +104,10 @@ public class Agent implements BattleEventLoggable {
 		return this.maxAP;
 	}
 
+	public boolean hasUsedAP() {
+		return (this.ap < this.maxAP);
+	}
+
 	public int getHP() {
 		return this.hp;
 	}

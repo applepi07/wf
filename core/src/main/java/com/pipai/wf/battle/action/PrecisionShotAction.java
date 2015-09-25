@@ -8,6 +8,7 @@ import com.pipai.wf.battle.damage.PercentageModifierList;
 import com.pipai.wf.battle.damage.TargetedActionCalculator;
 import com.pipai.wf.battle.damage.WeaponDamageFunction;
 import com.pipai.wf.battle.log.BattleEvent;
+import com.pipai.wf.battle.weapon.Rifle;
 import com.pipai.wf.battle.weapon.Weapon;
 import com.pipai.wf.exception.IllegalActionException;
 import com.pipai.wf.unit.ability.Ability;
@@ -57,6 +58,9 @@ public class PrecisionShotAction extends TargetedWithAccuracyAction {
 		}
 		Agent target = getTarget();
 		Weapon w = a.getCurrentWeapon();
+		if (!(w instanceof Rifle)) {
+			throw new IllegalActionException("Rifle needed to use Precision Shot");
+		}
 		if (w.needsAmmunition() && w.currentAmmo() == 0) {
 			throw new IllegalActionException("Not enough ammo to fire " + w.name());
 		}
